@@ -18,6 +18,17 @@ interface PrintTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
+// Define an interface for the constructor of StudentClass
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClass;
+}
+
+// Define an interface for the StudentClass itself
+interface StudentClass {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
 // Create a class that implements the Teacher interface
 class TeacherImpl implements Teacher {
   constructor(
@@ -30,6 +41,19 @@ class TeacherImpl implements Teacher {
   ) {
     // Assign any additional attributes to the object
     Object.assign(this, extraAttributes);
+  }
+}
+
+// Implement the StudentClass class
+class StudentClassImpl implements StudentClass {
+  constructor(private firstName: string, private lastName: string) {}
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
   }
 }
 
@@ -60,6 +84,9 @@ const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
   return fullName;
 };
 
+// Create an instance of StudentClass
+const student = new StudentClassImpl("John", "Doe");
+
 // Print the Teacher object
 console.log(teacher1);
 
@@ -69,3 +96,7 @@ console.log(director1);
 // Test the printTeacher function
 const fullName = printTeacher("John", "Doe");
 console.log(fullName); // Output: "J. Doe"
+
+// Test the class methods
+console.log(student.workOnHomework()); // Output: "Currently working"
+console.log(student.displayName()); // Output: "John"
