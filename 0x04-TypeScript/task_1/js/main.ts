@@ -8,6 +8,11 @@ interface Teacher {
   [key: string]: any; // Allow for any additional attributes
 }
 
+// Define the Directors interface that extends Teacher
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
 // Create a class that implements the Teacher interface
 class TeacherImpl implements Teacher {
   constructor(
@@ -33,5 +38,18 @@ const teacher1: Teacher = new TeacherImpl(
   { contract: true } // Additional attribute
 );
 
+// Create a Director object
+const director1: Directors = {
+  firstName: "Alice",
+  lastName: "Johnson",
+  fullTimeEmployee: true,
+  location: "San Francisco",
+  numberOfReports: 10, // Required attribute from Directors interface
+  // Additional attributes can also be added here
+};
+
 // Print the Teacher object
 console.log(teacher1);
+
+// print the director object
+console.log(director1);
