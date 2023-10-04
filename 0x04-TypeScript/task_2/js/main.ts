@@ -67,6 +67,20 @@ function executeWork(employee: string) {
   }
 }
 
+// Define the Subjects string literal type
+type Subjects = "Math" | "History";
+
+// Define the teachClass function
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === "Math") {
+    return "Teaching Math";
+  } else if (todayClass === "History") {
+    return "Teaching History";
+  } else {
+    return "Invalid subject";
+  }
+}
+
 // Test the createEmployee function
 console.log(createEmployee(200));    // Output: "Teacher"
 console.log(createEmployee(1000));   // Output: "Director"
@@ -76,3 +90,6 @@ console.log(createEmployee('$500')); // Output: "Director"
 executeWork(createEmployee(200));    // Output: "Getting to work"
 executeWork(createEmployee(1000));   // Output: "Getting to director tasks"
 
+// Test the teachClass function
+console.log(teachClass('Math'));     // Output: "Teaching Math"
+console.log(teachClass('History'));  // Output: "Teaching History"
