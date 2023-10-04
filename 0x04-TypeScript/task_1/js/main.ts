@@ -13,6 +13,11 @@ interface Directors extends Teacher {
   numberOfReports: number;
 }
 
+// Define the interface for the printTeacher function
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
 // Create a class that implements the Teacher interface
 class TeacherImpl implements Teacher {
   constructor(
@@ -48,8 +53,19 @@ const director1: Directors = {
   // Additional attributes can also be added here
 };
 
+// Implement the printTeacher function
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  const firstNameInitial = firstName.charAt(0); // Get the first letter of firstName
+  const fullName = `${firstNameInitial}. ${lastName}`;
+  return fullName;
+};
+
 // Print the Teacher object
 console.log(teacher1);
 
 // print the director object
 console.log(director1);
+
+// Test the printTeacher function
+const fullName = printTeacher("John", "Doe");
+console.log(fullName); // Output: "J. Doe"
